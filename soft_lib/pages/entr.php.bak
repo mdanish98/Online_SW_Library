@@ -1,0 +1,241 @@
+<?php
+session_start();
+
+$x=$_SESSION['login_user'];
+ 
+if(!isset($x))
+	{
+	header("location:welcome.php");
+	session_destroy();
+	}
+
+ include "cal.php";
+?>
+<html>
+
+<img src="http://localhost/online_software_library/soft_lib/images/logo.jpg" alt="logo" width="100%" height="12%">
+<style>
+html, body { margin:0; padding:0 }
+div.box
+{
+	
+width:100%;
+padding:10px;
+border:40px ridge;
+margin:0px;
+{background-color:#66E0FF;} 
+position:static;
+left:10px;
+top:100px;
+
+
+}
+
+
+</style> 
+
+
+<script type="text/javascript">
+  function validd(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p) {
+	  
+    if( (a== "") && (b== "") && (c== "") && (d == "")&&(e== "") && (f== "") && (g== "") && (h == "")&&(i== "") && (j== "") && (k== "") && (l == "")&&(m== "") && (n== "") && (o== "") && (p == "") ) 
+
+ {     alert("Please complete all the entries ");
+     // c.focus();
+    }
+	
+
+
+
+}
+	</script>
+<script type="text/javascript">
+  function validn(q){
+
+	  if ((typeof(x) !== 'number')) {
+   alert("Quantity must be Numeric value");}
+}
+</script>
+<style>
+        .box{ z-index:10; height:88%;
+                font-family:Tahoma, Geneva, sans-serif;
+                font-size:16px;
+                color:#333;
+                padding:5px;
+                background-color:#CCC;
+                border:2px solid #999;
+        }
+</style>
+<script type="text/javascript">
+function notif(x)
+{if(x == "") 
+
+    {  alert("Enter Completly");
+     // c.focus();
+    }
+else {
+	 alert("Enterd Successfully");
+	 }
+}
+</script>
+<style> h1{  background-color:#0099FF;} 
+</style>
+
+<div class="box"><h1 ><strong><font size = 6><center><strong>TOSL</font></strong></h1><br><br><br><br>
+<strong><b>Enter Software Details:</b><form name="reg" action="entr.php" method = "post">
+	<div><br><br>
+<label for="sno">&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;Serial No.</label>
+<input type="text" name="sno" value="Not Required" maxlength="10" id="sno"  />
+&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;
+<label for="sid">S Id:</label>
+<input type="text" name="sid" value="" maxlength="20" id="sid"  />
+</div>
+<div><br><br>
+&ensp;&ensp;&ensp;&ensp;&ensp;&emsp;&ensp;&emsp;<label for="name">Name:</label>
+<input type="text" name="name" value="" maxlength="100" id="name"  />
+&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;
+<label for="brand_name">Brand Name:</label>
+<input type="text" name="brand_name" value="" maxlength="80" id="brand_name"  /><br><br>
+</div>
+<div>&ensp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;
+<label for="version">Version:</label>
+<input type="text" name="version" value="" maxlength="20" id="version"  />
+&emsp;&nbsp;&ensp;&nbsp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;
+<label for="technology">Technology:</label>
+<input type="text" name="technology" value="" maxlength="80" id="technology"  /><br><br>
+</div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;&emsp;&ensp;&nbsp;&emsp;
+<label for="quantity">Quantity:</label>
+<input type="text" name="quantity" value="" maxlength="10" id="quantity" onblur="validn(reg.quantity.value);" />
+&nbsp;&emsp;&nbsp;&nbsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;
+<label for="license">License:</label>
+<input type="text" name="license" value="" maxlength="50" id="license" /><br><br>
+</div>
+<div>&ensp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="media_source">Media Source:</label>
+<input type="text" name="media_source" value="" maxlength="100" id="media_source"  />
+&emsp;&nbsp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;
+<label for="keywords">Keywords:</label>
+<input type="text" name="keywords" value="" maxlength="80" id="keywords"  /><br><br>
+</div>
+<div>&emsp;&nbsp;&nbsp;&emsp;&ensp;&nbsp;
+<label for="mannuals">Mannuals:</label>
+<input type="text" name="mannuals" value="" maxlength="100" id="mannuals" />
+&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&emsp;
+<label for="registration_key">Registration Key:
+<input type="text" name="registration_key" value="" maxlength="100" id="registration_key"  /> </label><br><br>
+</div>
+<div>
+<label for="key_classification">Key Classification:</label>
+<input name ="key_classification" type="text" name="key_classification" value="" maxlength="100" id="key_classification"  />
+&ensp;&emsp;&ensp;&emsp;&nbsp;&nbsp;&emsp;
+<label for="date_purchse">Date Of Purchase:</label>
+
+<input name="date_purchse"
+  type ="text" value="" onclick="displayDatePicker('date_purchse');" 
+value="" maxlength="100" id="date_purchse" 
+ /><br><br>
+</div>
+
+
+<div>&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="date_received">Receiving Date:</label>
+<input name="date_received" type ="text" value=""  id="date_received" onclick="displayDatePicker('date_received');"  />
+&ensp;&nbsp;&emsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&ensp;&nbsp;&emsp;
+<label for="url">Link:</label>
+<input type="text" name="url" value="" maxlength="100" id="url"  /><br><br>
+</div>
+<div>&nbsp;&nbsp;&nbsp;&emsp;&emsp;&ensp;&nbsp;&nbsp;&emsp;&ensp;&nbsp;
+<label for="status">Access:</label>
+<select name="status" >
+	<option value = "">Choose</option>
+  <option value = -1>Restricted</option>
+  <option value = 1>Available</option>
+</select>
+
+&ensp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;
+<label for="comments">Comments</label>
+<input type="text" name="comments" value="Any Comments" maxlength="100" id="comments"  onclick = '(value="")' /><br><br>
+
+
+
+
+	<input type="submit" name="btnSubmit" id="btnSubmit" value="         Submit         "   
+	onclick="validd(reg.sid.value,reg.name.value,reg.brand_name.value,reg.version.value,reg.technology.value,reg.quantity.value,reg.license.value,reg.media_source.value,reg.keywords.value,reg.mannuals.value,reg.registration_key.value,reg.key_classification.value,reg.date_purchse.value,reg.date_received.value,reg.url.value,reg.status.value);">
+	
+	
+</div>
+
+</form>
+<input  type="submit" value="     Go Back    " 
+    onclick="window.location='http://localhost/online_software_library/soft_lib/pages/sft.php';" /> <br><br>
+	<input  type="submit" value="     Main Menu    " 
+    onclick="window.location='http://localhost/online_software_library/soft_lib/pages/jadm.php';" /> 
+<?php
+mysql_connect("localhost", "root", "") or die("Opps some thing went wrong");
+mysql_select_db("jmi") or die("Opps some thing went wrong11");
+$sid = $_POST['sid'];
+
+//$sno=$_POST['sno'];
+$name=$_POST['name'];
+$bn=$_POST['brand_name'];
+$v=$_POST['version'];
+$t=$_POST['technology'];
+$q=$_POST['quantity'];
+$l=$_POST['license'];
+$ms=$_POST['media_source'];
+$k=$_POST['keywords'];
+$m=$_POST['mannuals'];
+$r=$_POST['registration_key'];
+$kc=$_POST['key_classification'];
+$dp=$_POST['date_purchse'];
+$dr=$_POST['date_received'];
+$u=$_POST['url'];
+
+$s=$_POST['status'];
+
+$c=$_POST['comments'];
+//echo"$c";
+//$sql="INSERT INTO usoath VALUES( '$mid','$reg','$sword','$add','$cell ','$landl',1)";
+if (!empty($sid)){
+$sql="INSERT INTO sofftt VALUES(  '','$sid','$name','$bn','$v','$t','$q','$l','$ms','$k','$m','$r','$kc','$dp','$dr','$u','$s','$c')";
+//$result = 
+mysql_query($sql)or die("Opps some thing went wrong");;
+
+}
+
+/*echo'<script type="text/javascript">
+function noitf()$sno,
+{
+document.write("<tr>");';
+ echo' document.write("<td><label name S.No>s.no<br><input type=text value="'.$s['0']."></td>)";
+  echo 'document.write("<td><input type=text value= '.$s['0'].'"></td>");
+</script>';
+
+function edit123()
+{echo "<td><input type=text value=".$s[0]."></form></td>";
+echo "<td><input type=text value=".$s[1]."></form></td>";
+	echo"hello";}
+	//echo $s['0'];function edit()
+//{
+
+
+
+
+onclick ="notif(reg.sno.value,reg.sid.value,reg.brand_name.value,reg.version.value,reg.technology.value,reg.quantity.value,reg.license.value,reg.media_source.value,reg.keywords.value,reg.mannuals.value,reg.registration_key.value,reg.key_classification.value,reg.date_purchse.value,reg.date_received.value,reg.url.value,reg.status.value);" 
+
+a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q
+
+
+	if(a=="" || b=="" || c =="" || d==""|| e==""||f==""||g==""||h==""||i==""||j==""||k==""||l==""||m==""||n==""||o==""|| p=="" ||q=="")
+	{alert("Incomplete entry");}
+	
+
+
+
+ //alert("<?php edit123(); ?>");
+// }<button >Edit</button>*/
+
+?>
+
+</html>

@@ -1,0 +1,318 @@
+<?php
+session_start();
+
+
+
+$x = $_SESSION['login_user'];
+ 
+if(!isset($x))
+	{
+	header("location:welcome.php");
+	exit();
+ }
+
+ 
+include "cal.php";
+//<span style="float: left; padding: 5px;">
+?>
+<html>
+
+
+<img src="http://localhost/online_software_library/soft_lib/images/logo.jpg" alt="logo" width="100%" height="12%">
+<style>
+html, body { margin:0; padding:0 }
+div.box
+{
+width:100%;
+padding:10px;
+border:40px ridge;
+margin:0px;
+{background-color:#66E0FF;} 
+position:static;
+left:10px;
+top:100px;
+}
+</style> 
+<style> h1{  background-color:#0099FF;} 
+</style>
+<style>
+        .box{ height:88%; z-index:10; 
+                font-family:Tahoma, Geneva, sans-serif;
+                font-size:16px;
+                color:#333;
+                padding:5px;
+                background-color:#CCC;
+                border:2px solid #999;
+        }
+</style>
+
+<div class="box">
+
+
+<h1 ><strong><font size = 6><center><strong>TOSL</font></strong></CENTER></h1><?php
+$x = $_SESSION['login_user'];
+
+echo "
+Welcome,$x";
+$sn=$_GET['mid'];
+?> 
+
+<strong><b></b>
+<center>
+<b>Enter Member Id:</b><form name="reg" action="mshpvd.php" method = "post">
+	<div>
+
+
+&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;
+<label for="mid">Member  Id:</label>
+
+<input type="text" name="mid" value="<?php echo($sn);?>" maxlength="20" id="mid" /><br>
+&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;<input type="radio" name="sets" value="-1">View
+<input type="radio" name="sets" value="1" />Edit<br><br> <br>&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;
+<input type = "submit" value="          Submit          " />
+
+</form>
+
+&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;
+<input  type="submit" value="       All Members      " 
+     onclick="window.location='http://localhost/online_software_library/soft_lib/pages/allmam.php';" />
+
+<input  type="submit" value="       Main Menu      " 
+     onclick="window.location='http://localhost/online_software_library/soft_lib/pages/jadm.php';" /><br><br>
+&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;
+<input  type="submit" value="         Go Back        " 
+     onclick="window.location='http://localhost/online_software_library/soft_lib/pages/mshp.php';" />
+
+	
+	 </html>
+
+
+
+
+<?php
+mysql_connect("localhost", "root", "") or die("Opps some thing went wrong");
+		mysql_select_db("jmi")or die("Opps some thing went wrong");
+		$sets=$_POST['sets'];
+		 $set11=$_SESSION['sett'];
+		 $sno=$_POST['sno'];
+		$mid = $_POST['mid'];
+		$r=$_POST['reguser'];
+		$s=$_POST['sword'];
+		$a=$_POST['addr'];
+		$c=$_POST['cell'];
+		$l=$_POST['landl'];
+		$st=$_POST['status'];
+		$o=$_POST['ofcdet'];
+//$xxx= $_SESSION['$mid'];
+//echo"$xxx";
+//echo"<input type='submit' name='btnSubmit' id='btnSubmit' value='Edit' onclick=".edit();">
+
+ 
+
+
+if (!empty($mid))
+	{
+
+		
+		////$sql="SELECT * FROM usoath WHERE mid ='$mid'";
+		//$result=mysql_query($sql);
+		//$row=mysql_fetch_array($result);
+		//echo("$result");
+				//echo("$row");
+			//$active=$row['active'];
+
+		
+
+	if (!empty($sno))
+
+		{ 
+			if($set11== 11){
+				mysql_connect("localhost", "root", "") or die("Opps some thing went wrong");
+		mysql_select_db("jmi")or die("Opps some thing went wrong");
+		$sql1231="UPDATE usrecd SET mid='$mid',reguser='$r',sword='$s',addr='$a',cell='$c',landl='$l',status='$st',ofcdet='$o'  WHERE sno='$sno'";
+		
+			mysql_query($sql1231)or die("Opps some thing went wrong1");
+
+$sql123="UPDATE usoath SET mid='$mid',reguser='$r',sword='$s',addr='$a',cell='$c',landl='$l',status='$st',ofcdet='$o'  WHERE sno='$sno'";
+		
+			mysql_query($sql123)or die("Opps some thing went wrong1");
+		//echo"$sn";
+
+/*
+		$sqll="UPDATE sofftt SET sid='$s',name='$n',brand_name='$bn',version='$v',technology='$t',quantity='$q',license='$l',media_source='$ms',keywords='$k',mannuals='$m',registration_key='$rk',key_classification='$kc',date_purchse='$dp',date_received='$dr',url='$u',status='$st',comments='$cm' WHERE sno='$sn'";
+	mysql_query($sqll)or die("Opps some thing went wrong");	*/
+//echo"$sn";
+				$sql121="SELECT * FROM usoath WHERE mid ='$mid'";
+				$result121=mysql_query($sql121) or die("Opps some thing went wrong12");;
+
+				echo "<br><br>Changed values<br><br><table border='1' name = 'fs'>
+				<tr>
+				<th>Serial no.</th>
+				<th>Member Id</th>
+				<th>User name</th>
+				<th>Password</th>
+				<th>Address</th>
+				<th>Cell Number</th>
+				<th>Land Line</th>
+				<th>Status</th>
+				<th>Dept. Details</th>
+				</tr>";
+				//echo '<form name="softt" action ="det.php" method="post">
+				//<label for ="s.no">s.no</label><input type ="text" name ="s.no" value ="'.$s[0]. '">';
+				
+
+				while($row = mysql_fetch_array($result121))
+				  {
+					  echo "<tr>";
+					  echo "<td>" . $row['sno'] . "</td>";
+					  echo "<td>" . $row['mid'] . "</td>";
+					  echo "<td>" . $row['reguser'] . "</td>";
+					  echo "<td>" . $row['sword'] . "</td>";
+					  echo "<td>" . $row['addr'] . "</td>";
+					  echo "<td>" . $row['cell'] . "</td>";
+					  echo "<td>" . $row['landl'] . "</td>";
+						 $zz =$row['status'];
+								if($zz== -1)
+									$xx="Member Blocked";
+								else
+									$xx="Access Granted";
+						 echo "<td>" . $xx . "</td>";
+						 echo "<td>" . $row['ofcdet'] . "</td>";
+					  echo "</tr>";
+			  
+				  }
+			}
+		}
+	
+
+	else
+		{
+			global $s;
+			$mid = $_POST['mid'];
+			if (isset($mid))
+
+				{//onblur="valid(sof.sets.value,sof.sets);"
+   
+
+				//echo("$sid");
+
+				$sql="SELECT * FROM usoath WHERE mid ='$mid'";
+				$result=mysql_query($sql);
+				//$row=mysql_fetch_array($result);
+				//echo("$result");
+				//echo("$row");
+				//$active=$row['active'];
+	
+					if($sets== 1){
+		
+						$row = mysql_fetch_array($result);
+
+							{
+
+								  echo "<form name='bypas' action='mshpvd.php' method='post'>";
+								  echo"<center>";
+								  echo "<br><label>	Sno:	</label>&emsp;&ensp;&nbsp;&emsp;&ensp;";
+								  echo"<script type='text/javascript'>
+								  function notice() 
+		    
+								 {     alert('This field cannot be changed');
+				     // c.focus();
+					    }</script>"	;
+								  echo "<input type='text' id='sno' name='sno' value='" . $row['sno'] . "'readonly onclick='notice();'></input><br><br>
+						";
+						  echo "<label>Member Id:</label>";
+						  echo "<input id='mid' class='box1' name='mid' value='". $row['mid'] . "'></input><br><br>";
+						  echo "
+							<label>UserName:			</label>";
+							  echo "<input id='reguser' class='box1' name='reguser' value='". $row['reguser'] .			"'></input>&ensp;&ensp;&nbsp;&ensp;
+					";
+				  echo "<br><br><label>Password:	</label>";
+				  echo "<input id='sword' name='sword' value='". $row['sword'] . "'></input><br>";
+				  echo "<br><label>Address:	</label>";
+					  echo "<input id='addr' name='addr' value='". $row['addr'] . "'></input><br>";
+					  echo "<br><label>Cell No:	</label>";
+				  echo "<input id='cell' name='cell' value='". $row['cell'] . "'></input><br>";
+					  echo "<br><label>Landline:	</label>";
+				echo "<input  id='landl' name='landl' value='". $row['landl'] . "'></input><br>";
+			  echo "<br><label>Status:	</label>";
+			  $zz =$row['status'];
+								if($zz== -1)
+									$xx="Member Blocked";
+								else
+									$xx="Access Granted";
+				  echo "<input id='status' name='status' value='" . $xx . "'></input><br>";
+				  echo "<br><label>Dept. Details</label>";
+				  echo "<label for='ofcdet'>Name of the Dept:</label>
+<select name = 'ofcdet' id = 'ofcdet'>
+	<option value=''>Select</option>
+  <option value='Mathematics'>Mathematics</option>
+  <option value='Computers'>Computers</option>
+  <option value='Law'>Law</option>
+  <option value='CMS'>CMS</option>
+</select><br>";
+			  $_SESSION['sett']=11;
+				 echo"<input type ='submit' name='btnSubmit' id='btnSubmit' value='     Submit    '  ></form>";
+		  //echo"</div>";
+		} 
+					
+}
+  
+ else if ($sets== -1){
+
+echo "<br><br><table border='1' name = 'fs'>
+<tr>
+				<th>Serial no.</th>
+				<th>Member Id</th>
+				<th>User name</th>
+				<th>Password</th>
+				<th>Address</th>
+				<th>Cell Number</th>
+				<th>Land Line</th>
+				<th>Status</th>
+				<th>Dept. Details</th>
+				</tr>";
+//echo '<form name="softt" action ="det.php" method="post">
+//<label for ="s.no">s.no</label><input type ="text" name ="s.no" value ="'.$s[0]. '">';
+
+while($row = mysql_fetch_array($result))
+  {
+ echo "<tr>";
+					  echo "<td>" . $row['sno'] . "</td>";
+					  echo "<td>" . $row['mid'] . "</td>";
+					  echo "<td>" . $row['reguser'] . "</td>";
+					  echo "<td>" . $row['sword'] . "</td>";
+					  echo "<td>" . $row['addr'] . "</td>";
+					  echo "<td>" . $row['cell'] . "</td>";
+					  echo "<td>" . $row['landl'] . "</td>";
+						 $zz =$row['status'];
+								if($zz== -1)
+									$xx="Member Blocked";
+								else
+									$xx="Access Granted";
+						 echo "<td>" . $xx . "</td>";
+						 echo "<td>" . $row['ofcdet'] . "</td>";
+					  echo "</tr>";
+  echo "</table>";
+  }
+
+
+}
+
+
+				}
+
+
+		
+else{	
+
+		echo"<script type='text/javascript'>
+		alert('Please Select a valid option from View/Edit.');
+		</script>";
+	}
+
+		}
+	}
+		
+	
+
+?>

@@ -1,0 +1,208 @@
+<html>
+<style>
+div.ex
+{
+width:220px;
+padding:10px;
+border:5px solid black;
+margin:0px;
+
+position:absolute;
+left:30%;
+
+
+}
+
+
+</style> 
+<img src="http://localhost/online_software_library/soft_lib/images/logo.jpg" alt="key" width="100%" height="12%">
+<script type="text/javascript">
+  function valid(n,c) {
+    if(n == "") 
+
+ {     alert("This field cannot be empty");
+     // c.focus();
+    }
+    else if(c.name == "pincode" || c.name == "age" || c.name == "phone" || c.name == "weight")
+    {
+     var strValidChars = "0123456789";
+     var strChar;
+     for (i = 0; i < n.length; i++)
+     {
+      strChar = n.charAt(i);
+      if (strValidChars.indexOf(strChar) == -1)
+      {
+        alert("Please input numerical value in textbox.");
+        c.value="";
+        c.focus();
+        return;
+      }
+     }
+   }
+           
+  }
+</script>
+<br>
+<div class="ex"><b>Registerd User:</b><br>The Online Software Library<form name="reg" action="uvldtn.php" method = "post"><br>
+	<div>
+<label for="username">User Name</label>
+<input type="text" name="username" value="" maxlength="100" id="username" onblur="valid(reg.username.value,reg.username);" /><br>
+</div>
+
+<label for="password">password</label>	
+ <input type="password" name="password" id="password" onblur="valid(reg.password.value,reg.password);" /><br>
+	<input type="submit" name="btnSubmit" id="btnSubmit" value="Login">
+	<img src="http://localhost/online_software_library/soft_lib/images/key.gif" alt="key" width="180" height="175">
+</div>
+</form>
+<style>
+        .box{ z-index:10; height:80%;
+                font-family:Tahoma, Geneva, sans-serif;
+                font-size:16px;
+                color:#333;
+                padding:5px;
+                background-color:#CCC;
+                border:2px solid #999;
+				position:absolute;
+				right:30%;
+				
+        }
+</style>
+<script type="text/javascript">
+  function validd(a,b,c,d,e,f,g,h) {
+	  
+    if( (a== "") && (b== "") && (c== "") && (d == "")&&(e== "") && (f== "") && (g== "") && (h == "") ) 
+
+ {     alert("Please complete all the entries ");
+     // c.focus();
+    }
+	
+
+
+
+}
+	</script>
+<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+<script type="text/javascript">
+$(function()
+{
+  $('.username').keyup(function()
+  {
+  var username=$(this).val();
+  username=trim(username);
+  if(username!=''){
+  $('.check').show();
+  $('.check').fadeIn(400).html('');
+
+  var dataString = 'username='+ username;
+  $.ajax({
+          type: "POST",
+          url: "check.php",
+          data: dataString,
+          cache: false,
+          success: function(result){
+               var result=trim(result);
+               if(result==''){
+                       $('.check').html('Avaliable');
+                       $('#submit').attr('disabled', '');
+                       $('#submit').attr('value', 'Active');
+                       $(".username").removeClass("white");
+                       $(".username").addClass("red");
+               }
+					   else if(result=='blocked'){
+                       $('.check').html(' '+' ID Blocked');
+                       $('#submit').attr('disabled', 'disabled');
+                       $('#submit').attr('value', 'Deactive');
+                       $(".username1").removeClass("black");
+                       $(".username1").addClass("white");
+			   }
+					   else{
+                       $('.check').html(' '+' Not Available');
+                       $('#submit').attr('disabled', 'disabled');
+                       $('#submit').attr('value', 'Deactive');
+                       $(".username").removeClass("black");
+                       $(".username").addClass("white");
+               }
+          }
+      });
+   }else{
+       $('.check').html('');
+       $('#submit').attr('disabled', 'disabled');
+       $('#submit').attr('value', 'Deactive');
+   }
+  });
+});
+
+function trim(str){
+     var str=str.replace(/^\s+|\s+$/,'');
+     return str;
+}
+</script>
+
+<div class ="box">
+<b>Not a Member Yet??</b><br><br> Apply Online for Membership<form name="regg" action="uonlin.php" method = "post"><br><font size="2" color="RED">(ALL ENTRIES ARE COMPULSORY)</FONT>
+	<div>
+<label >Name:</label>&emsp;&ensp;&nbsp;&emsp;&ensp;&emsp;&ensp;&nbsp;
+<input type="text" name="nam" id="nam" value="" maxlength="100" /><br>
+</div><br>
+<div>
+<label>Address:</label>&emsp;&ensp;&nbsp;&nbsp;&nbsp;&emsp;&ensp;
+<input type="text" name="addr" id="addr" value="" maxlength="100"  /><br><br>
+</div>
+<div>
+<label >Contact Number:</label>&nbsp;
+<input type="text" name="cell" id="cell" value="" maxlength="100" /><br><br>
+</div>
+<div>
+<label> landline:</label>&emsp;&ensp;&nbsp;&nbsp;&nbsp;&emsp;&ensp;
+<input type="text" name="landl" id="landl" value="" maxlength="100" /><br><br>
+</div>
+<div>
+<label> E-mail:</label>&emsp;&ensp;&nbsp;&nbsp;&nbsp;&ensp;&ensp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" name="email" id="email" value="" maxlength="100" /><br><br>
+</div>
+<div>
+<label >Name of the Dept:</label>
+<select name = "ofcdet" id = "ofcdet">
+	<option value="">Select</option>
+  <option value="Mathematics">Mathematics</option>
+  <option value="Computers">Computers</option>
+  <option value="Law">Law</option>
+  <option value="CMS">CMS</option>
+</select>
+	</div><br><br>
+	<div>
+<label >Username</label>
+<input type="text" name="mid" id="mid" value="" class="username" maxlength="100" /><br><br>
+<span class="check" style="color:red;" ></span> 
+</div>
+
+<label>password</label>&nbsp;&nbsp;	
+ <input type="password" name="password" id="password" /><br><br>
+	<input type="submit" name="btnSubmit" id="btnSubmit" value="Submit" onclick="validd(regg.nam.value,regg.addr.value,regg.cell.value,regg.landl.value,regg.email.value,regg.ofcdet.value,regg.mid.value,regg.password.value);">
+	
+</div>
+</form>
+
+<?php
+mysql_connect("localhost", "root", "") or die("Opps some thing went wrong");
+mysql_select_db("jmi") or die("Opps some thing went wrong");
+$a=$_POST['nam'];
+$b=$_POST['addr'];
+$c=$_POST['cell'];
+$d=$_POST['landl'];
+$e=$_POST['email'];
+$f=$_POST['ofcdet'];
+$g=$_POST['mid'];
+$h=$_POST['password'];
+if(!empty($g) and !empty($f)and !empty($a)and !empty($b)and !empty($c)and !empty($d)and !empty($e)and !empty($h)){
+$sql ="INSERT INTO usereq VALUES( '','$a','$b','$c','$d','$e','$f','$g','$h','')";
+mysql_query($sql)or die("Opps some thing went wrong");;
+}
+
+
+?>
+
+
+
+</html>

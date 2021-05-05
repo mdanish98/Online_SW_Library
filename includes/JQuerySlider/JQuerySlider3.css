@@ -1,0 +1,280 @@
+.JQuerySliderShow {
+  display: block;
+}
+.JQuerySliderHide {
+  display: none;
+}
+.JQSlider {
+  position: relative;
+  text-align: left;
+}
+/* reset slider inner li*/
+.JQSlider li li {
+  width: auto;
+  height: auto;
+  list-style-type: disc;
+  list-style-position: outside;
+  list-style-image: none;
+}
+/* content style start */
+#JQuerySlider3 .header {
+  background: none no-repeat left center scroll;
+  border-left: 0px none #0066cc;
+  border-top: 0px none #0066cc;
+  border-bottom: 0px none #0066cc;
+  border-right: 0px none #0066cc;
+  padding: 0px 0px 0px 0px;
+  color: #000000;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 100%;
+}
+#JQuerySlider3 .subheader {
+  background: none no-repeat left center scroll;
+  border-left: 0px none #0066cc;
+  border-top: 0px none #0066cc;
+  border-bottom: 0px none #0066cc;
+  border-right: 0px none #0066cc;
+  padding: 0px 0px 0px 0px;
+  color: #333333;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 100%;
+}
+#JQuerySlider3 .paragraph {
+  background: none no-repeat left center scroll;
+  border-left: 0px none #0066cc;
+  border-top: 0px none #0066cc;
+  border-bottom: 0px none #0066cc;
+  border-right: 0px none #0066cc;
+  padding: 0px 0px 0px 0px;
+  color: #ffffff;
+  text-align: left;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 100%;
+}
+/* content style end */
+/* content style end */
+#JQuerySlider3Container {
+  background: url('backgrounds/JQuerySlider3/background.png') no-repeat left center scroll;
+  border-left: 0px none #0066cc;
+  border-top: 0px none #0066cc;
+  border-bottom: 0px none #0066cc;
+  border-right: 0px none #0066cc;
+  padding: 15px 18px 21px 18px;
+  position: relative;
+  width: 664px;
+  height: 339px;
+  color: #000000;
+}
+#JQuerySlider3 {
+  width: 664px;
+  height: 339px;
+}
+#JQuerySlider3 img {
+  border-left: 0 none #000000;
+  border-top: 0 none #000000;
+  border-bottom: 0 none #000000;
+  border-right: 0 none #000000;
+}
+#JQuerySlider3 ul, #JQuerySlider3 li {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  position: relative;
+  list-style-type: none;
+  list-style-position: outside;
+  list-style-image: none;
+}
+#JQuerySlider3 li {
+  width: 664px;
+  height: 339px;
+}
+/*	nav bar resets */
+#JQuerySlider3_bullets_in, #JQuerySlider3_bullets_in ul, #JQuerySlider3_bullets_in li {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  position: relative;
+  list-style-type: none;
+  list-style-position: outside;
+  list-style-image: none;
+  width: auto;
+  height: auto;
+}
+/*	nav bar container */
+#JQuerySlider3_bullets_in {
+  position: absolute;
+  top: auto;
+  left: 268px;
+}
+/*	nav bar container */
+#JQuerySlider3_bullets_in {
+  background: none no-repeat left top scroll;
+  border-left: 0px none transparent;
+  border-top: 0px solid transparent;
+  border-bottom: 0px none transparent;
+  border-right: 0px none transparent;
+  padding: 10px 10px 10px 10px;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  right: auto;
+  bottom: -1px;
+}
+/*	nav bar ul */
+#JQuerySlider3_bullets_in ul {
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+}
+/*	nav bar element container */
+#JQuerySlider3_bullets_in li {
+  float: left;
+  padding-right: 5px;
+}
+/*	nav bar element normal state */
+#JQuerySlider3_bullets_in li a {
+  background: url('skin1/default/nav_item_up.png') no-repeat center center scroll;
+  font: normal normal normal 0px/0px Arial,Helvetica,sans-serif;
+  border-left: 0px solid #000000;
+  border-top: 0px solid #000000;
+  border-bottom: 0px solid #000000;
+  border-right: 0px solid #000000;
+  padding: 0px 0px 0px 0px;
+  float: left;
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+  color: #000000;
+  text-decoration: none;
+  text-align: center;
+  text-transform: none;
+}
+/*	nav bar element hover state */
+#JQuerySlider3_bullets_in li a.hover {
+  background: url('skin1/default/nav_item_over.png') no-repeat center center scroll;
+  font: normal normal normal 0px/0px Arial,Helvetica,sans-serif;
+  border-left: 0px solid #000000;
+  border-top: 0px solid #000000;
+  border-bottom: 0px solid #000000;
+  border-right: 0px solid #000000;
+  padding: 0px 0px 0px 0px;
+  float: left;
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+  color: #00ffff;
+  text-decoration: none;
+  text-align: left;
+  text-transform: none;
+}
+/*	nav bar element active state */
+#JQuerySlider3_bullets_in li a.active {
+  background: url('skin1/default/nav_item_down.png') no-repeat center center scroll;
+  font: normal normal normal 0px/0px Arial,Helvetica,sans-serif;
+  border-left: 0px solid #000000;
+  border-top: 0px solid #000000;
+  border-bottom: 0px solid #000000;
+  border-right: 0px solid #000000;
+  padding: 0px 0px 0px 0px;
+  float: left;
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+  color: #0000ff;
+  text-decoration: none;
+  text-align: left;
+  text-transform: none;
+}
+/*	inner back button positioning */
+#JQuerySlider3_back_in {
+  position: absolute;
+  top: 146px;
+  left: 7px;
+}
+/*	inner back button normal state */
+#JQuerySlider3_back_in {
+  background: url('skin1/default/back_button_up.png') repeat left top scroll;
+  font: normal normal normal 12px/100% Arial,Helvetica,sans-serif;
+  border-left: 0px solid #000000;
+  border-top: 0px solid #000000;
+  border-bottom: 0px solid #000000;
+  border-right: 0px solid #000000;
+  padding: 0px 0px 0px 0px;
+  width: 53px;
+  height: 53px;
+  cursor: pointer;
+  right: auto;
+  bottom: auto;
+  color: #000000;
+  text-decoration: none;
+  text-align: left;
+  text-transform: none;
+}
+/*	inner back button hover state */
+#JQuerySlider3_back_in.hover {
+  background: url('skin1/default/back_button_over.png') repeat left top scroll;
+  font: normal normal normal 12px/100% Arial,Helvetica,sans-serif;
+  border-left: 0px solid #000000;
+  border-top: 0px solid #000000;
+  border-bottom: 0px solid #000000;
+  border-right: 0px solid #000000;
+  padding: 0px 0px 0px 0px;
+  width: 53px;
+  height: 53px;
+  cursor: pointer;
+  color: #000000;
+  text-decoration: none;
+  text-align: left;
+  text-transform: none;
+}
+/*	inner next button positioning */
+#JQuerySlider3_next_in {
+  position: absolute;
+  top: 146px;
+  left: auto;
+}
+/*	inner next button normal state */
+#JQuerySlider3_next_in {
+  background: url('skin1/default/next_button_up.png') no-repeat left top scroll;
+  font: normal normal normal 12px/100% Arial,Helvetica,sans-serif;
+  border-left: 0px solid #000000;
+  border-top: 0px solid #000000;
+  border-bottom: 0px solid #000000;
+  border-right: 0px solid #000000;
+  padding: 0px 0px 0px 0px;
+  width: 53px;
+  height: 53px;
+  cursor: pointer;
+  right: 7px;
+  bottom: auto;
+  color: #000000;
+  text-decoration: none;
+  text-align: left;
+  text-transform: none;
+}
+/*	inner next button hover state */
+#JQuerySlider3_next_in.hover {
+  background: url('skin1/default/next_button_over.png') no-repeat left top scroll;
+  font: normal normal normal 12px/100% Arial,Helvetica,sans-serif;
+  border-left: 0px solid #000000;
+  border-top: 0px solid #000000;
+  border-bottom: 0px solid #000000;
+  border-right: 0px solid #000000;
+  padding: 0px 0px 0px 0px;
+  width: 53px;
+  height: 53px;
+  cursor: pointer;
+  color: #000000;
+  text-decoration: none;
+  text-align: left;
+  text-transform: none;
+  right: 7px;
+  bottom: auto;
+}

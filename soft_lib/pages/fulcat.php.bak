@@ -1,0 +1,88 @@
+<html>
+<style>
+        .box{ z-index:10;
+		 
+      height:188%;
+       
+                font-family:Tahoma, Geneva, sans-serif;
+                font-size:16px;
+                color:#333;
+                padding:5px;
+                background-color:#E6CC80;
+                border:2px solid #5C5233;
+        }
+</style>
+<img src="http://localhost/online_software_library/soft_lib/images/logo.jpg" alt="logo" width="100%" height="12%">
+<style>
+html, body { margin:0; padding:0 }
+div.box
+{
+width:100%;
+padding:10px;
+border:40px ridge;
+margin:0px;
+{background-color:#E6CC80;} 
+position:static;
+left:10px;
+top:100px;
+}
+</style> 
+<style> h1{  background-color:#B28847;} 
+</style>
+<div class="box">
+
+
+<h1 ><strong><font size = 6><center><strong>TOSL</font></strong></CENTER></h1><?php
+
+echo "Welcome,user";?><br><br>
+<input  type="submit" value="         Home        " 
+     onclick="window.location='http://localhost/online_software_library/soft_lib/pages/welcome.php';" />
+	 <input  type="submit" value="         Search        " 
+     onclick="window.location='http://localhost/online_software_library/soft_lib/pages/nsir.php';" /><br><br>
+<font size='3' ><center>Softwares List</font></center><br><br>
+
+<?php
+mysql_connect("localhost", "root", "") or die("Opps some thing went wrong");
+mysql_select_db("jmi") or die("Opps some thing went wrong");
+$sql="SELECT * FROM sofftt ";
+		$result=mysql_query($sql) or die("Opps some thing went wrong1");;
+echo"<center>";
+		echo "<br><br>Details<br><br><table border='1' name = 'fs'>
+				<tr>
+				<th>Software Id.</th>
+				<th>Name</th>
+				<th>Company</th>
+				<th>version</th>
+				<th>technology</th>
+				<th>manuals</th>
+				<th>Status</th>
+				<th>Download</th>
+				</tr>";
+			
+				while($row = mysql_fetch_array($result))
+				  {
+					  echo "<tr>";
+					  echo "<td>" . $row['sid'] . "</td>";
+					  echo "<td>" . $row['name'] . "</td>";
+					  echo "<td>" . $row['brand_name'] . "</td>";
+					  echo "<td>" . $row['version'] . "</td>";
+					  echo "<td>" . $row['technology'] . "</td>";
+					
+					  echo "<td>" . $row['mannuals'] . "</td>";
+						 $zz =$row['status'];
+								if($zz== -1)
+									$xx="Access Restricted";
+								else
+									$xx="Available";
+						 echo "<td>" . $xx . "</td>";
+						 $u=$row['url'] ;
+						 
+						  if ($zz==-1)
+							{	echo "<td>Link Unavailable</a> </td>";}
+						 else{
+
+						 echo "<td><a href =http://localhost/online_software_library/soft_lib/pages/nsir.php?name=". $row['name'] ." > Download</a> </td>";}
+					  echo "</tr>";
+			  
+				  }
+				  ?>

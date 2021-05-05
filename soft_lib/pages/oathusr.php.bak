@@ -1,0 +1,352 @@
+<?php
+session_start();
+
+
+
+$x1 = $_SESSION['login_userr'];
+ 
+if(!isset($x1))
+	{
+	header("location:welcome.php");
+	exit();
+ }?>
+<html>
+<style>
+        .box{ z-index:10;
+		 
+      height:88%;
+       
+                font-family:Tahoma, Geneva, sans-serif;
+                font-size:16px;
+                color:#333;
+                padding:5px;
+                background-color:#E6CC80;
+                border:2px solid #5C5233;
+        }
+</style>
+<img src="http://localhost/online_software_library/soft_lib/images/logo.jpg" alt="logo" width="100%" height="12%">
+<style>
+html, body { margin:0; padding:0 }
+div.box
+{
+width:100%;
+padding:10px;
+border:40px ridge;
+margin:0px;
+{background-color:#E6CC80;} 
+position:static;
+left:10px;
+top:100px;
+}
+</style> 
+<style> h1{  background-color:#B28847;} 
+</style>
+<div class="box">
+
+
+<h1 ><strong><font size = 6><center><strong>TOSL</font></strong></CENTER></h1><?php
+
+echo "Welcome,$x1";
+?>
+
+<center>
+
+<br><br><br><input type ="submit" value = "     Search     "onclick="window.location='http://localhost/online_software_library/soft_lib/pages/fulcat.php';"/> <br><br><br>
+	<input  type="submit" value="    All Softwares( Catalogue )   " 
+     onclick="window.location='http://localhost/online_software_library/soft_lib/pages/fulcat.php';" /><br><br><br>
+	 <input  type="submit" value="         Home        " 
+     onclick="window.location='http://localhost/online_software_library/soft_lib/pages/welcome.php';" />
+
+</html>
+
+
+
+<?php
+
+mysql_connect("localhost", "root", "") or die("Opps some thing went wrong");
+mysql_select_db("jmi") or die("Opps some thing went wrong");
+
+$n=mysql_real_escape_string($_POST['name']);
+$c=mysql_real_escape_string($_POST['brand_name']);
+$t=mysql_real_escape_string($_POST['technology']);
+$k=mysql_real_escape_string($_POST['keywords']);
+//echo"$c";
+/*if ((empty($n) and empty($c) and empty($t) and empty($k) ))
+		{
+		echo"<script type='text/javascript'>
+		alert('Please Select atleast one valid option.');
+		</script>";
+		}
+*/
+if (!empty($_SESSION['setn']))
+		{$n1=$_SESSION['setn'];
+			$sql="SELECT * FROM sofftt WHERE name like	'%$n1%' ";
+		$result=mysql_query($sql) or die("Opps some thing went wrong1");;
+	echo"<br><br><font color='GREEN' sixe='4'> You Are Authenticated to Download now.</font>";
+		echo "<br><br>Details<br><br><table border='1' name = 'fs'>
+				<tr>
+				
+				<th>Product</th>
+				<th>Company</th>
+				<th>Version</th>
+				<th>Technology</th>
+				<th>Manuals</th>
+				<th>Status</th>
+				<th>Download</th>
+				</tr>";
+			
+				while($row = mysql_fetch_array($result))
+				  {
+					  echo "<tr>";
+					 
+					  echo "<td>" . $row['name'] . "</td>";
+					  echo "<td>" . $row['brand_name'] . "</td>";
+					  echo "<td>" . $row['version'] . "</td>";
+					  echo "<td>" . $row['technology'] . "</td>";
+					
+					  echo "<td>" . $row['mannuals'] . "</td>";
+						 $zz =$row['status'];
+								if($zz== -1)
+									$xx="Access Restricted";
+								else
+									$xx="Available";
+						 echo "<td>" . $xx . "</td>";
+						 $u=$row['url'] ;
+						 
+
+						 if ($zz==-1)
+							{	echo "<td> <p>Download URL:<p> Link Unavailable</a> </td>";}
+						 else{$doi = date("Y-m-d");
+						  echo "<td> <p>Download URL:<a href =http://localhost/online_software_library/soft_lib/pages/udld.php?sid=". $row['sid'] ."&doi=". $doi."&url=".$u." target='_blank'  > DOWNLOAD </a></td>";}
+
+
+						
+					  echo "</tr>";
+			  
+				  }
+
+		}
+
+else if (!empty($_SESSION['setnn1']))
+		{$n1=$_SESSION['setnn1'];
+			$sql="SELECT * FROM sofftt WHERE name like	'%$n1%' ";
+		$result=mysql_query($sql) or die("Opps some thing went wrong1");;
+echo"<br><br><font color='GREEN' sixe='4'> You Are Authenticated to Download now.</font>";
+		echo "<br><br>Details<br><br><table border='1' name = 'fs'>
+				<tr>
+				
+				<th>Product</th>
+				<th>Company</th>
+				<th>Version</th>
+				<th>Technology</th>
+				<th>Manuals</th>
+				<th>Status</th>
+				<th>Download</th>
+				</tr>";
+			
+				while($row = mysql_fetch_array($result))
+				  {
+					  echo "<tr>";
+					 
+					  echo "<td>" . $row['name'] . "</td>";
+					  echo "<td>" . $row['brand_name'] . "</td>";
+					  echo "<td>" . $row['version'] . "</td>";
+					  echo "<td>" . $row['technology'] . "</td>";
+					
+					  echo "<td>" . $row['mannuals'] . "</td>";
+						 $zz =$row['status'];
+								if($zz== -1)
+									$xx="Access Restricted";
+								else
+									$xx="Available";
+						 echo "<td>" . $xx . "</td>";
+						 $u=$row['url'] ;
+						 
+
+						 if ($zz==-1)
+							{	echo "<td> <p>Download URL:<p> Link Unavailable</a> </td>";}
+						 else{$doi = date("Y-m-d");
+						  echo "<td> <p>Download URL:<a href =http://localhost/online_software_library/soft_lib/pages/udld.php?sid=". $row['sid'] ."&doi=". $doi."&url=".$u." target='_blank'  > DOWNLOAD </a></td>";}
+
+
+						
+					  echo "</tr>";
+			  
+				  }
+
+		}
+
+elseif (isset($_SESSION['setc']))
+		{$c1=$_SESSION['setc'];
+			$sql1="SELECT * FROM sofftt WHERE brand_name like '%$c1%' ";
+		$result1=mysql_query($sql1) or die("Opps some thing went wrong2");;
+echo"<br><br><font color='GREEN' sixe='4'> You Are Authenticated to Download now.</font>";
+		echo "<br><br>Details<br><br><table border='1' name = 'fs'>
+				<tr>
+				
+				<th>Product</th>
+				<th>Company</th>
+				<th>Version</th>
+				<th>Technology</th>
+				<th>Manuals</th>
+				<th>Status</th>
+				<th>Download</th>
+				</tr>";
+				while($row = mysql_fetch_array($result1))
+				  {
+					  echo "<tr>";
+					 
+					  echo "<td>" . $row['name'] . "</td>";
+					  echo "<td>" . $row['brand_name'] . "</td>";
+					  echo "<td>" . $row['version'] . "</td>";
+					  echo "<td>" . $row['technology'] . "</td>";
+					
+					  echo "<td>" . $row['mannuals'] . "</td>";
+						 $zz =$row['status'];
+								if($zz== -1)
+									$xx="Access Restricted";
+								else
+									$xx="Available";
+						 echo "<td>" . $xx . "</td>";
+						 $u=$row['url'] ;
+						 
+						  if ($zz==-1)
+							{	echo "<td> <p>Download URL:<p> Link Unavailable</a> </td>";}
+						 else{$doi = date("Y-m-d");
+						  echo "<td> <p>Download URL:<a href =http://localhost/online_software_library/soft_lib/pages/udld.php?sid=". $row['sid'] ."&doi=". $doi."&url=".$u." target='_blank'  > DOWNLOAD </a></td>";}
+
+
+
+					  echo "</tr>";
+			  
+				  }
+
+		}
+elseif (!empty($_SESSION['settt']))
+		{$t1=$_SESSION['settt'];
+			$sql="SELECT * FROM sofftt WHERE technology like	'%$t1%' ";
+		$result=mysql_query($sql) or die("Opps some thing went wrong1");;
+echo"<br><br><font color='GREEN' sixe='4'> You Are Authenticated to Download now.</font>";
+		echo "<br><br>Details<br><br><table border='1' name = 'fs'>
+				<tr>
+				
+				<th>Product</th>
+				<th>Company</th>
+				<th>Version</th>
+				<th>Technology</th>
+				<th>Manuals</th>
+				<th>Status</th>
+				<th>Download</th>
+				</tr>";
+			
+				while($row = mysql_fetch_array($result))
+				  {
+					  echo "<tr>";
+					  
+					  echo "<td>" . $row['name'] . "</td>";
+					  echo "<td>" . $row['brand_name'] . "</td>";
+					  echo "<td>" . $row['version'] . "</td>";
+					  echo "<td>" . $row['technology'] . "</td>";
+					
+					  echo "<td>" . $row['mannuals'] . "</td>";
+						 $zz =$row['status'];
+								if($zz== -1)
+									$xx="Access Restricted";
+								else
+									$xx="Available";
+						 echo "<td>" . $xx . "</td>";
+						 $u=$row['url'] ;
+						 
+						 if ($zz==-1)
+							{	echo "<td> <p>Download URL:<p> Link Unavailable</a> </td>";}
+						 else{$doi = date("Y-m-d");
+						  echo "<td> <p>Download URL:<a href =http://localhost/online_software_library/soft_lib/pages/udld.php?sid=". $row['sid'] ."&doi=". $doi."&url=".$u." target='_blank'  > DOWNLOAD </a></td>";}
+
+					  echo "</tr>";
+			  
+				  }
+		}
+	
+else if (!empty($_SESSION['setk'])){ $k1=$_SESSION['setk'];
+			$sql="SELECT * FROM sofftt WHERE keywords like	'%$k1%' ";
+		$result=mysql_query($sql) or die("Opps some thing went wrong1");;
+echo"<br><br><font color='GREEN' sixe='4'> You Are Authenticated to Download now.</font>";
+		echo "<br><br>Details<br><br><table border='1' name = 'fs'>
+				<tr>
+				
+				<th>Product</th>
+				<th>Company</th>
+				<th>Version</th>
+				<th>Technology</th>
+				<th>Manuals</th>
+				<th>Status</th>
+				<th>Download</th>
+				</tr>";
+			
+				while($row = mysql_fetch_array($result))
+				  {
+					  echo "<tr>";
+					  
+					  echo "<td>" . $row['name'] . "</td>";
+					  echo "<td>" . $row['brand_name'] . "</td>";
+					  echo "<td>" . $row['version'] . "</td>";
+					  echo "<td>" . $row['technology'] . "</td>";
+					
+					  echo "<td>" . $row['mannuals'] . "</td>";
+						 $zz =$row['status'];
+								if($zz== -1)
+									$xx="Access Restricted";
+								else
+									$xx="Available";
+						 echo "<td>" . $xx . "</td>";
+						 $u=$row['url'] ;
+						 
+						  if ($zz==-1)
+							{	echo "<td> <p>Download URL:<p> Link Unavailable</a> </td>";}
+						 else{$doi = date("Y-m-d");
+						  echo "<td> <p>Download URL:<a href =http://localhost/online_software_library/soft_lib/pages/udld.php?sid=". $row['sid'] ."&doi=". $doi."&url=".$u." target='_blank'  > DOWNLOAD </a></td>";}
+
+
+					  echo "</tr>";
+			  
+				  }
+
+		}
+
+
+
+?>
+
+
+
+
+
+
+
+
+<?php
+/*
+<form action = >
+<table border='1'>
+
+<tr>
+<td>S.No.</td>
+<th>S Id</th>
+<th>Name</th>
+<th>Brand Name</th>
+<th>Version</th>
+<th>Technology</th>
+<th>Quantity</th>
+<th>License</th>
+<th>Media Source</th>
+<th>Key Words</th>
+<th>Mannuals</th>
+<th>Registration Key</th>
+<th>Key Classification</th>
+<th>Date Of Purchse</th>
+<th>Date Of Received </th>
+<th>URL</th>
+<th>Status</th>
+</tr>
+</body>*/
+?>

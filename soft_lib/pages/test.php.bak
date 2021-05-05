@@ -1,0 +1,68 @@
+<?php
+session_start();
+?>
+<html>
+<img src="C:\wamp\www\online_software_library\soft_lib\images\logo.jpg" alt="logo" width="100%" height="98">
+<style>
+html, body { margin:0; padding:0 }
+div.box
+{
+width:100%;
+padding:10px;
+border:40px ridge;
+margin:0px;
+{background-color:#66E0FF;} 
+position:static;
+left:10px;
+top:100px;
+}
+</style> 
+<style> h1{  background-color:#0099FF;} 
+</style>
+<div class="box">
+
+
+<h1 ><strong><font size = 6><center><strong>TOSL</font></strong></CENTER></h1><?php
+$x = $_SESSION['login_user'];
+ 
+if(!isset($x))
+	{
+	header("location:oflib.php");
+	}
+
+ 
+else 
+echo "
+Welcome,$x";
+
+?> <br><br><br><br>
+<strong><b></b>
+
+<input type="submit" value="Enter Details" 
+    onclick="window.location='http://localhost/online_software_library/soft_lib/pages/entr.php';" /> 
+
+	<input type="submit" value="Check Details" 
+    onclick="window.location='http://localhost/online_software_library/soft_lib/pages/det.php';" /> 
+
+	<input type="submit" value="        Issue        " 
+    onclick="window.location='http://localhost/online_software_library/soft_lib/pages/asue.php';" /> 
+
+	<input type="submit" value="          Return        " 
+    onclick="window.location='http://localhost/online_software_library/soft_lib/pages/bret.php';" /> 
+
+	<input type="submit" value="       Search       " 
+    onclick="window.location='http://localhost/online_software_library/soft_lib/pages/nsir.php';" /> 
+<br><br>
+&nbsp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&emsp;
+&nbsp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&emsp;
+	<input type="submit" value="          Membership            " 
+    onclick="window.location='http://localhost/online_software_library/soft_lib/pages/mshp.php';" /> 
+
+	<input type="submit" value="         Requisitions        " 
+    onclick="window.location='http://localhost/online_software_library/soft_lib/pages/ros.php';" /> 
+
+	
+<?php 
+//$x = $_SESSION['login_user'];
+//echo($x);?>
+</html>

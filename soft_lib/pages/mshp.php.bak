@@ -1,0 +1,91 @@
+<?php
+session_start();
+
+
+
+$x = $_SESSION['login_user'];
+ 
+if(!isset($x))
+	{
+	header("location:welcome.php");
+	exit();
+ }
+
+ 
+include "cal.php";
+?>
+<script type="text/javascript">
+  function valid(n,c) {
+    if(n == "") 
+
+ {     alert("This field cannot be empty");
+     // c.focus();
+    }
+    else if(c.name == "pincode" || c.name == "age" || c.name == "phone" || c.name == "weight")
+    {
+     var strValidChars = "0123456789";
+     var strChar;
+     for (i = 0; i < n.length; i++)
+     {
+      strChar = n.charAt(i);
+      if (strValidChars.indexOf(strChar) == -1)
+      {
+        alert("Please input numerical value in textbox.");
+        c.value="";
+        c.focus();
+        return;
+      }
+     }
+   }
+           
+  }
+</script>
+<html>
+<img src="http://localhost/online_software_library/soft_lib/images/logo.jpg" alt="logo" width="100%" height="12%">
+<style>
+html, body { margin:0; padding:0 }
+div.box
+{
+width:100%;
+padding:10px;
+border:40px ridge;
+margin:0px;
+{background-color:#66E0FF;} 
+position:static;
+left:10px;
+top:100px;
+}
+</style> 
+<style> h1{  background-color:#0099FF;} 
+</style>
+<div class="box">
+
+
+<h1 ><strong><font size = 6><center><strong>TOSL</font></strong></CENTER></h1><?php
+$x = $_SESSION['login_user'];
+
+echo "
+Welcome,$x";
+
+?> <br><br><br><br>
+<strong><b></b>
+<center>
+
+<input name= "am" type="button" value="      Add  Member     "  
+	 onclick="window.location='http://localhost/online_software_library/soft_lib/pages/mshpam.php';"> <br><br>
+<input name ="rm" type="button" value="  Remove Member "
+	 onclick="window.location='http://localhost/online_software_library/soft_lib/pages/mshprm.php';"><br><br>
+<input name ="vd" type= "button" value = "      View    Details    "
+	 onclick="window.location='http://localhost/online_software_library/soft_lib/pages/mshpvd.php';"><br><br>
+<input name ="bm" type= "button" value = "Set Member Status"
+	 onclick="window.location='http://localhost/online_software_library/soft_lib/pages/mshpbm.php';"><br><br><br>
+<input  type="submit" value="     Go Back    " 
+     onclick="window.location='http://localhost/online_software_library/soft_lib/pages/jadm.php';" /> 
+<br><br>
+<br><br>
+&nbsp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&emsp;
+&nbsp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&ensp;&nbsp;&emsp;
+	
+	
+
+</html>

@@ -1,0 +1,105 @@
+<?php
+session_start();
+
+
+
+$x = $_SESSION['login_user'];
+ 
+if(!isset($x))
+	{
+	header("location:welcome.php");
+	exit();
+ }
+
+ 
+include "cal.php";
+?>
+<html>
+
+<img src="http://localhost/online_software_library/soft_lib/images/logo.jpg" alt="logo" width="100%" height="12%">
+<style>
+        .box{ z-index:10; height:88%;
+                font-family:Tahoma, Geneva, sans-serif;
+                font-size:16px;
+                color:#333;
+                padding:5px;
+                background-color:#CCC;
+                border:2px solid #999;
+        }
+</style>
+<style>
+html, body { margin:0; padding:0 }
+div.box
+{
+width:100%;
+padding:10px;
+border:40px ridge;
+margin:0px;
+{background-color:#66E0FF;} 
+position:static;
+left:10px;
+top:100px;
+}
+</style> 
+<style> h1{  background-color:#0099FF;} 
+</style>
+<span style="float: left; padding: 5px; height:100%;">
+<div class="box">
+
+
+<h1 ><strong><font size = 6><center><strong>TOSL</font></strong></CENTER></h1><?php
+$x = $_SESSION['login_user'];
+
+echo "
+Welcome,$x";
+
+?> 
+
+<strong><b></b>
+<center>
+<b>Enter Member Id:</b><form name="reg" action="mshpbm.php" method = "post">
+	<div>
+
+
+&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;&ensp;&nbsp;&emsp;
+<label for="mid">Member  Id:</label>
+<input type="text" name="mid" value="" maxlength="20" id="mid" /><br><br>&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;
+
+<input type="radio" name="sets" value="-1">Block
+<input type="radio" name="sets" value="0">UnBlock<br><br> 
+&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;
+<input type = "submit" value="          Submit          " />
+</form>
+&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;
+<input  type="submit" value="       Main Menu      " 
+     onclick="window.location='http://localhost/online_software_library/soft_lib/pages/jadm.php';" /><br><br>
+&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;&emsp;&ensp;
+<input  type="submit" value="         Go Back        " 
+     onclick="window.location='http://localhost/online_software_library/soft_lib/pages/mshp.php';" />
+	
+	 </html>
+
+
+
+
+<?php
+
+//echo"<input type='submit' name='btnSubmit' id='btnSubmit' value='Edit' onclick=".edit();">
+echo"</form>";
+$sets=$_POST['sets'];
+$mid = $_POST['mid'];
+if (!empty($mid))
+{
+ 
+mysql_connect("localhost", "root", "") or die("Opps some thing went wrong");
+mysql_select_db("jmi")or die("Opps some thing went wrong");
+if($sets== -1){
+	$sql="UPDATE usoath SET status= '-1' WHERE mid='$mid'";
+	mysql_query($sql);
+	}
+else{
+	$sql="UPDATE usoath SET status= '0' WHERE mid='$mid'";
+	mysql_query($sql);
+	}
+}
+?>

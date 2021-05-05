@@ -1,0 +1,62 @@
+
+<html>
+<style>
+        .box{ z-index:10;
+		 
+      height:88%;
+       
+                font-family:Tahoma, Geneva, sans-serif;
+                font-size:16px;
+                color:#333;
+                padding:5px;
+                background-color:#E6CC80;
+                border:2px solid #5C5233;
+        }
+</style>
+<img src="http://localhost/online_software_library/soft_lib/images/logo.jpg" alt="logo" width="100%" height="12%">
+<style>
+html, body { margin:0; padding:0 }
+div.box
+{
+width:100%;
+padding:10px;
+border:40px ridge;
+margin:0px;
+{background-color:#E6CC80;} 
+position:static;
+left:10px;
+top:100px;
+}
+</style> 
+<style> h1{  background-color:#B28847;} 
+</style>
+<div class="box">
+
+
+<h1 ><strong><font size = 6><center><strong>TOSL</font></strong></CENTER></h1><?php
+
+echo "Welcome,$x";?>
+<form action = >
+<table border='1'>
+
+<tr>
+<td>S.No.</td>
+<th>S Id</th>
+<th>Name</th>
+<th>Brand Name</th>
+<th>Version</th>
+<th>Technology</th>
+<th>Quantity</th>
+<th>License</th>
+<th>Media Source</th>
+<th>Key Words</th>
+<th>Mannuals</th>
+<th>Registration Key</th>
+<th>Key Classification</th>
+<th>Date Of Purchse</th>
+<th>Date Of Received </th>
+<th>URL</th>
+<th>Status</th>
+</tr>
+</body>
+</html>
